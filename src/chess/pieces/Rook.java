@@ -20,46 +20,20 @@ public class Rook extends ChessPiece {
     @Override
     public boolean[][] possibleMoves() {
         boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getCols()];
-
         Position p = new Position(0, 0);
-        // above
-        p.setValues(position.getRow() - 1, position.getCol());
-        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-            mat[p.getRow()][p.getCol()] = true;
-            p.setRow(p.getRow() - 1);
-        }
-        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-            mat[p.getRow()][p.getCol()] = true;
-        }
 
-        // left
-        p.setValues(position.getRow(), position.getCol() - 1);
-        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-            mat[p.getRow()][p.getCol()] = true;
-            p.setCol(p.getCol() - 1);
-        }
-        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-            mat[p.getRow()][p.getCol()] = true;
-        }
+        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
-        // right
-        p.setValues(position.getRow(), position.getCol() + 1);
-        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-            mat[p.getRow()][p.getCol()] = true;
-            p.setCol(p.getCol() + 1);
-        }
-        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-            mat[p.getRow()][p.getCol()] = true;
-        }
+        for (int[] dir : directions) {
+            p.setValues(position.getRow() + dir[0], position.getCol() + dir[1]);
 
-        // below
-        p.setValues(position.getRow() + 1, position.getCol());
-        while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-            mat[p.getRow()][p.getCol()] = true;
-            p.setRow(p.getRow() + 1);
-        }
-        if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
-            mat[p.getRow()][p.getCol()] = true;
+            while (getBoard().positionExists(p) && canMove(p)) {
+                mat[p.getRow()][p.getCol()] = true;
+
+                if (getBoard().thereIsAPiece(p)) break;
+
+                p.setValues(p.getRow() + dir[0], p.getCol() + dir[1]);
+            }
         }
         return mat;
     }
