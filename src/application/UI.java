@@ -72,7 +72,7 @@ public class UI {
             }
             System.out.println();
         }
-        System.out.println("  A B C D E F G"); // Ａ Ｂ Ｃ Ｄ Ｅ Ｆ Ｇ Ｈ
+        System.out.println("  A B C D E F G H"); // Ａ Ｂ Ｃ Ｄ Ｅ Ｆ Ｇ Ｈ
     }
 
     public static void printBoard(ChessPiece[][] pieces, boolean[][] highlightMoves) {
@@ -83,7 +83,7 @@ public class UI {
             }
             System.out.println();
         }
-        System.out.println("  A B C D E F G"); // Ａ Ｂ Ｃ Ｄ Ｅ Ｆ Ｇ Ｈ
+        System.out.println("  A B C D E F G H"); // Ａ Ｂ Ｃ Ｄ Ｅ Ｆ Ｇ Ｈ
     }
 
     private static void printPiece(ChessPiece piece, boolean background) {
