@@ -12,12 +12,6 @@ public class Rook extends ChessPiece {
     }
 
     @Override
-    public String toString() {
-        // return this.getColor() == Color.BLACK ? "♖" : "♜";
-        return "R";
-    }
-
-    @Override
     public boolean[][] possibleMoves() {
         boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getCols()];
         Position p = new Position(0, 0);
@@ -36,5 +30,11 @@ public class Rook extends ChessPiece {
             }
         }
         return mat;
+    }
+
+    @Override
+    public String toString() {
+        // return this.getColor() == Color.BLACK ? "♖" : "♜";
+        return "R";
     }
 }
